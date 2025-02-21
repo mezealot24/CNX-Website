@@ -1,6 +1,44 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss';
+
+@theme {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+}
+
+/*
+  The default border color has changed to `currentColor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentColor);
+  }
+}
+
+@layer theme {
+  :root {
+    --spacing: 0.25rem;
+  }
+}
+@layer utilities {
+  .mt-8 {
+    margin-top: calc(var(--spacing) * 8);
+  }
+  .w-17 {
+    width: calc(var(--spacing) * 17);
+  }
+  .pr-29 {
+    padding-right: calc(var(--spacing) * 29);
+  }
+}
 
 :root {
   --background: #ffffff;
@@ -18,4 +56,72 @@ body {
   color: var(--foreground);
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+.news-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.news-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #f0f0f0;
+}
+
+.news-item {
+  display: flex;
+  gap: 20px;
+  padding: 15px;
+  border-bottom: 1px solid #f0f0f0;
+  transition: background-color 0.3s;
+}
+
+.news-item:hover {
+  background-color: #f8f9fa;
+}
+
+.news-icon {
+  flex-shrink: 0;
+  width: 60px;
+  height: 60px;
+}
+
+.news-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.news-content {
+  flex: 1;
+}
+
+.news-title {
+  font-size: 16px;
+  margin-bottom: 8px;
+  color: #333;
+}
+
+.news-meta {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 8px;
+}
+
+.read-more {
+  color: #0066cc;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.read-more:hover {
+  text-decoration: underline;
 }
