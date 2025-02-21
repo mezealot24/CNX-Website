@@ -7,10 +7,23 @@ import GovernorProfile from "@/components/GovernorProfile";
 import AnnouncementSection from "@/components/AnnouncementSection";
 import ProcurementSection from "@/components/ProcurementSection";
 import ActivitySection from "@/components/ActivitySection";
+import HeroSection from "@/components/HeroSection";
+
+// ข้อมูลสำหรับ Carousel
+const carouselItems = [
+	{ src: "/images/hero-1.jpg", alt: "ภาพกิจกรรม 1" },
+	{ src: "/images/hero-2.jpg", alt: "ภาพกิจกรรม 2" },
+	{ src: "/images/hero-3.jpg", alt: "ภาพกิจกรรม 3" },
+];
 
 export default function Home() {
 	return (
 		<main className="container mx-auto px-4 py-8">
+			{/* Hero Section (Carousel) */}
+			<div className="mb-8">
+				<HeroSection items={carouselItems} />
+			</div>
+
 			{/* Grid Layout แบบ 1:3 */}
 			<div className="mt-8 grid grid-cols-1 md:grid-cols-4 gap-8">
 				{/* คอลัมน์ซ้าย (1 ส่วน) */}
